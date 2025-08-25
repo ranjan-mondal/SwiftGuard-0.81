@@ -260,20 +260,20 @@ const App = (props) => {
     <Context.Provider value={[initial, setInitial]}>
       <ToastContext.Provider value={[toast, setToast]}>
         <UserContext.Provider value={[user, setUser]}>
-          <SafeAreaView style={{flex:1}}>
-          <CustomToaster
-            color={Constants.black}
-            backgroundColor={Constants.white}
-            timeout={4000}
-            toast={toast}
-            setToast={setToast}
-          />
-          <StatusBar
-            backgroundColor="#000000"
-            barStyle="light-content"
-            translucent={true}
-          />
-          {initial != '' && <MainRoutes initial={initial} />}
+          <SafeAreaView style={{ flex: 1, backgroundColor: Constants.newBlack }}>
+            <CustomToaster
+              color={Constants.black}
+              backgroundColor={Constants.white}
+              timeout={4000}
+              toast={toast}
+              setToast={setToast}
+            />
+            <StatusBar
+              backgroundColor="#000000"
+              barStyle="light-content"
+              translucent={true}
+            />
+            {initial != '' && <MainRoutes initial={initial} />}
           </SafeAreaView>
           {/* {initial !== '' && ( */}
 
