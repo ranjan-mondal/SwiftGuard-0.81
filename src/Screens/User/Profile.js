@@ -33,7 +33,7 @@ import Constants from '../../Helpers/constant';
 import CameraGalleryPeacker from '../../Component/CameraGalleryPeacker';
 import CoustomDropdown from '../../Component/CoustomDropdown';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import RNFetchBlob from 'rn-fetch-blob';
+import RNFetchBlob from 'react-native-blob-util';
 import moment, { relativeTimeRounding } from 'moment';
 import { Context } from '../../../App';
 import CustomToaster from '../../Component/CustomToaster';

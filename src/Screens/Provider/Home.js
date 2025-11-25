@@ -39,7 +39,7 @@ import NojobFound from '../../Component/NojobFound';
 import { OneSignal } from 'react-native-onesignal';
 import { Avatar } from 'react-native-paper';
 import GetCurrentAddressByLatLong from '../../Component/GetCurrentAddressByLatLong';
-import RNFetchBlob from 'rn-fetch-blob';
+import RNFetchBlob from 'react-native-blob-util';
 import CameraGalleryPeacker from '../../Component/CameraGalleryPeacker';
 import ImageCropPicker from 'react-native-image-crop-picker';
 

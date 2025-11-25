@@ -27,7 +27,7 @@ import Spinner from '../../Component/Spinner';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from '../../Helpers/constant';
 import CameraGalleryPeacker from '../../Component/CameraGalleryPeacker';
-import RNFetchBlob from 'rn-fetch-blob';
+import RNFetchBlob from 'react-native-blob-util';
 import { Context, ToastContext, UserContext } from '../../../App';
 import CustomToaster from '../../Component/CustomToaster';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -123,7 +123,7 @@ const ProfilrPro = props => {
         return (
           <TouchableOpacity onPress={() => {
             if (verified === 'false') {
-              setToast('Please contact with support'); 
+              setToast('Please contact with support');
             }
             else if (isSia !== undefined) {
               reset('provider')
@@ -307,9 +307,9 @@ const ProfilrPro = props => {
         // console.log('Security Guard Profile:', res.data);
         // console.log(res.data.identity);
         if (res.status) {
-if (res.data.verified==='false') {
-  setModalVisible(true)
-}
+          if (res.data.verified === 'false') {
+            setModalVisible(true)
+          }
           setprofile(res?.data || {});
           await AsyncStorage.setItem('profilePic', res?.data?.profile || '');
           console.log('isVerify User ====>', res.data.verified);
@@ -1018,24 +1018,24 @@ if (res.data.verified==='false') {
           </Pressable>
         </Modal>
         <Modal
-        animationType="none"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <View style={{backgroundColor: 'white', alignItems: 'center'}}>
-              <View style={[styles.covline,{width:'100%'}]}>
-                <View></View>
-                <Text style={styles.textStyle5}>Account Suspended </Text>
-                <TouchableOpacity style={styles.croscov} onPress={()=>setModalVisible(false)}>
-                  <Icon name="close" size={30} color="#ff0101ff" />
-                </TouchableOpacity>
-              </View>
-              <Text style={styles.textStyle4}>Your account has been suspended. Please contact our support team for assistance.</Text>
-              
+          animationType="none"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <View style={{ backgroundColor: 'white', alignItems: 'center' }}>
+                <View style={[styles.covline, { width: '100%' }]}>
+                  <View></View>
+                  <Text style={styles.textStyle5}>Account Suspended </Text>
+                  <TouchableOpacity style={styles.croscov} onPress={() => setModalVisible(false)}>
+                    <Icon name="close" size={30} color="#ff0101ff" />
+                  </TouchableOpacity>
+                </View>
+                <Text style={styles.textStyle4}>Your account has been suspended. Please contact our support team for assistance.</Text>
+
                 <TouchableOpacity
                   activeOpacity={0.9}
                   onPress={async () => {
@@ -1044,11 +1044,11 @@ if (res.data.verified==='false') {
                   style={styles.logOutButtonStyle2}>
                   <Text style={styles.modalText}>okay</Text>
                 </TouchableOpacity>
-              
+
+              </View>
             </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
       </KeyboardAwareScrollView>
     </View>
   );

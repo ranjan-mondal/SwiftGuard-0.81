@@ -30,7 +30,7 @@ import { Context } from '../../../App';
 import CustomToaster from '../../Component/CustomToaster';
 import { GetApi, Post } from '../../Helpers/Service';
 import CameraGalleryPeacker from '../../Component/CameraGalleryPeacker';
-import RNFetchBlob from 'rn-fetch-blob';
+import RNFetchBlob from 'react-native-blob-util';
 
 const selectionCamera = createRef();
 

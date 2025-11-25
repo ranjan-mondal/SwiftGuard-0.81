@@ -15,10 +15,10 @@ import SpInAppUpdates, {
 } from 'sp-react-native-in-app-updates';
 import DeviceInfo from 'react-native-device-info';
 import VersionInfo from 'react-native-version-info';
-import {
-  setJSExceptionHandler,
-  setNativeExceptionHandler,
-} from 'react-native-exception-handler';
+// import {
+//   setJSExceptionHandler,
+//   setNativeExceptionHandler,
+// } from 'react-native-exception-handler';
 import CustomToaster from './src/Component/CustomToaster';
 import Constants from './src/Helpers/constant';
 import { GetApi } from './src/Helpers/Service';
@@ -51,11 +51,11 @@ const errorHandler = (e, isFatal) => {
   }
 };
 
-setJSExceptionHandler(errorHandler, true);
+// setJSExceptionHandler(errorHandler, true);
 
-setNativeExceptionHandler(errorString => {
-  console.log(errorString);
-});
+// setNativeExceptionHandler(errorString => {
+//   console.log(errorString);
+// });
 
 export const Context = React.createContext();
 export const ToastContext = React.createContext();
@@ -216,45 +216,45 @@ const App = (props) => {
     // OneSignal.addEventListener('received', onReceived) .
   }, [OneSignal]);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const inAppUpdates = new SpInAppUpdates(
-  //     true, 
-  //   );
-  //   ImageCropPicker.clean().then(() => {
-  //     console.log('removed all tmp images from tmp directory');
-  //   }).catch(e => {
+    const inAppUpdates = new SpInAppUpdates(
+      true,
+    );
+    ImageCropPicker.clean().then(() => {
+      console.log('removed all tmp images from tmp directory');
+    }).catch(e => {
 
-  //   });
+    });
 
-  //   try {
-  //     inAppUpdates.checkNeedsUpdate({ curVersion: VersionInfo?.appVersion }).then(
-  //       result => {
-  //         // console.log(result.shouldUpdate);
-  //         if (result.shouldUpdate) {
-  //           const updateOptions = Platform.select({
-  //             ios: {
-  //               title: 'Update available',
-  //               message:
-  //                 'There is a new version of the app available on the App Store, do you want to update it?',
-  //               buttonUpgradeText: 'Update',
-  //               buttonCancelText: 'Cancel',
-  //             },
-  //             android: {
-  //               updateType: IAUUpdateKind.IMMEDIATE,
-  //             },
-  //           });
-  //           inAppUpdates.startUpdate(updateOptions); // https://github.com/SudoPlz/sp-react-native-in-app-updates/blob/master/src/types.ts#L78
-  //         }
-  //       },
-  //       err => {
-  //         console.log(err);
-  //       },
-  //     );
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, []);
+    try {
+      inAppUpdates.checkNeedsUpdate({ curVersion: VersionInfo?.appVersion }).then(
+        result => {
+          // console.log(result.shouldUpdate);
+          if (result.shouldUpdate) {
+            const updateOptions = Platform.select({
+              ios: {
+                title: 'Update available',
+                message:
+                  'There is a new version of the app available on the App Store, do you want to update it?',
+                buttonUpgradeText: 'Update',
+                buttonCancelText: 'Cancel',
+              },
+              android: {
+                updateType: IAUUpdateKind.IMMEDIATE,
+              },
+            });
+            inAppUpdates.startUpdate(updateOptions); // https://github.com/SudoPlz/sp-react-native-in-app-updates/blob/master/src/types.ts#L78
+          }
+        },
+        err => {
+          console.log(err);
+        },
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   return (
     <Context.Provider value={[initial, setInitial]}>
